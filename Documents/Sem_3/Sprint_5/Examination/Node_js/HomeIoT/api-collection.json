@@ -1,0 +1,235 @@
+{
+  "version": "1.1",
+  "name": "HomeIoT API Collection",
+  "folders": [
+    { "id": "auth", "name": "Auth" },
+    { "id": "devices", "name": "Devices" },
+    { "id": "controls", "name": "Controls" },
+    { "id": "schedules", "name": "Schedules" },
+    { "id": "logs", "name": "Logs" },
+    { "id": "alerts", "name": "Alerts" },
+    { "id": "notifications", "name": "Notifications" }
+  ],
+  "requests": [
+    {
+      "id": "auth-register",
+      "name": "Register User",
+      "folderId": "auth",
+      "url": "http://localhost:8080/api/auth/register",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@homeiot.com\",\n  \"password\": \"Test@12345\"\n}"
+      }
+    },
+    {
+      "id": "auth-login",
+      "name": "Login",
+      "folderId": "auth",
+      "url": "http://localhost:8080/api/auth/login",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"test@homeiot.com\",\n  \"password\": \"Test@12345\"\n}"
+      }
+    },
+    {
+      "id": "auth-firebase-login",
+      "name": "Firebase Login",
+      "folderId": "auth",
+      "url": "http://localhost:8080/api/auth/firebase-login",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"idToken\": \"<FIREBASE_ID_TOKEN>\"\n}"
+      }
+    },
+    {
+      "id": "auth-me",
+      "name": "Get My Profile",
+      "folderId": "auth",
+      "url": "http://localhost:8080/api/auth/me",
+      "method": "GET",
+      "headers": [{ "name": "Authorization", "value": "Bearer <JWT_TOKEN>" }]
+    },
+    {
+      "id": "devices-get-all",
+      "name": "Get All Devices",
+      "folderId": "devices",
+      "url": "http://localhost:8080/api/devices",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "devices-get-one",
+      "name": "Get Device By ID",
+      "folderId": "devices",
+      "url": "http://localhost:8080/api/devices/<device_id>",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "devices-create",
+      "name": "Create Device",
+      "folderId": "devices",
+      "url": "http://localhost:8080/api/devices",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Living Room Light\",\n  \"type\": \"Light\",\n  \"room\": \"Living Room\",\n  \"status\": \"OFF\",\n  \"value\": 0\n}"
+      }
+    },
+    {
+      "id": "devices-update",
+      "name": "Update Device",
+      "folderId": "devices",
+      "url": "http://localhost:8080/api/devices/<device_id>",
+      "method": "PUT",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"ON\",\n  \"value\": 80\n}"
+      }
+    },
+    {
+      "id": "devices-delete",
+      "name": "Delete Device",
+      "folderId": "devices",
+      "url": "http://localhost:8080/api/devices/<device_id>",
+      "method": "DELETE",
+      "headers": []
+    },
+    {
+      "id": "controls-post",
+      "name": "Send Control Command",
+      "folderId": "controls",
+      "url": "http://localhost:8080/api/controls",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"deviceId\": \"<device_id>\",\n  \"status\": \"ON\",\n  \"value\": 75,\n  \"command\": \"Turn on Living Room Light\"\n}"
+      }
+    },
+    {
+      "id": "controls-get-all",
+      "name": "Get All Controls",
+      "folderId": "controls",
+      "url": "http://localhost:8080/api/controls",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "controls-update",
+      "name": "Update Control Record",
+      "folderId": "controls",
+      "url": "http://localhost:8080/api/controls/<control_id>",
+      "method": "PUT",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"OFF\",\n  \"value\": 0\n}"
+      }
+    },
+    {
+      "id": "schedules-create",
+      "name": "Create Schedule",
+      "folderId": "schedules",
+      "url": "http://localhost:8080/api/schedules",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"device\": \"<device_id>\",\n  \"action\": \"ON\",\n  \"time\": \"23:30\",\n  \"isActive\": true\n}"
+      }
+    },
+    {
+      "id": "schedules-get-all",
+      "name": "Get All Schedules",
+      "folderId": "schedules",
+      "url": "http://localhost:8080/api/schedules",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "schedules-update",
+      "name": "Update Schedule",
+      "folderId": "schedules",
+      "url": "http://localhost:8080/api/schedules/<schedule_id>",
+      "method": "PUT",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"action\": \"OFF\",\n  \"time\": \"07:00\",\n  \"isActive\": true\n}"
+      }
+    },
+    {
+      "id": "schedules-delete",
+      "name": "Delete Schedule",
+      "folderId": "schedules",
+      "url": "http://localhost:8080/api/schedules/<schedule_id>",
+      "method": "DELETE",
+      "headers": []
+    },
+    {
+      "id": "logs-get-all",
+      "name": "Get All Logs",
+      "folderId": "logs",
+      "url": "http://localhost:8080/api/logs",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "logs-get-by-device",
+      "name": "Get Logs By Device",
+      "folderId": "logs",
+      "url": "http://localhost:8080/api/logs/device/<device_id>",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "alerts-get-all",
+      "name": "Get All Alerts",
+      "folderId": "alerts",
+      "url": "http://localhost:8080/api/alerts",
+      "method": "GET",
+      "headers": []
+    },
+    {
+      "id": "alerts-check",
+      "name": "Check Device Alerts",
+      "folderId": "alerts",
+      "url": "http://localhost:8080/api/alerts/check",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"deviceId\": \"<device_id>\"\n}"
+      }
+    },
+    {
+      "id": "alerts-mark-read",
+      "name": "Mark Alert As Read",
+      "folderId": "alerts",
+      "url": "http://localhost:8080/api/alerts/<alert_id>/read",
+      "method": "PUT",
+      "headers": []
+    },
+    {
+      "id": "notifications-send",
+      "name": "Send FCM Notification",
+      "folderId": "notifications",
+      "url": "http://localhost:8080/api/notifications/send",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"token\": \"<FCM_DEVICE_TOKEN>\",\n  \"title\": \"HomeIoT Alert\",\n  \"body\": \"Living Room Light was turned ON\"\n}"
+      }
+    }
+  ]
+}
